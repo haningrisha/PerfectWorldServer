@@ -1,0 +1,28 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLGeneric</id><coordinates><x>320</x><y>200</y><w>480</w><h>300</h></coordinates><panel_attributes>Apps
+halign=left</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>380</x><y>320</y><w>120</w><h>40</h></coordinates><panel_attributes>Main</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>590</x><y>320</y><w>120</w><h>40</h></coordinates><panel_attributes>Forum</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>860</x><y>200</y><w>570</w><h>300</h></coordinates><panel_attributes>Views
+halign=left</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>910</x><y>280</y><w>120</w><h>100</h></coordinates><panel_attributes>Main
+--
+main
+about
+start_game
+contacts</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>280</y><w>110</w><h>90</h></coordinates><panel_attributes>Forum
+--
+main
+subsection
+article</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>320</x><y>550</y><w>900</w><h>340</h></coordinates><panel_attributes>Models Forum
+halign=left</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>690</y><w>180</w><h>110</h></coordinates><panel_attributes>_model: Article_
+--
+date: DateTime
+author: User
+header:String(180)
+text: Text
+ </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>690</y><w>210</w><h>70</h></coordinates><panel_attributes>_mdel: Section_
+--
+name: String(180)
+description: String(180)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>690</y><w>200</w><h>90</h></coordinates><panel_attributes>_model: Subsection_
+--
+name: String(180)
+description: String(180)
+section: Section</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>320</x><y>910</y><w>480</w><h>300</h></coordinates><panel_attributes>Models Main
+halign=left</panel_attributes><additional_attributes></additional_attributes></element></diagram>
