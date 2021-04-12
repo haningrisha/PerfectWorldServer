@@ -3,6 +3,59 @@
   src: url("Lovelace Trial Regular 400.ttf");
 }
 
+@font-face {
+    font-family: Montserrat;
+    src: url("Montserrat-Regular.ttf");
+}
+
 body {
     font-family: Lovelace, serif;
+}
+
+.bg-dark {
+    background-color: #202020!important;
+}
+
+a {
+    font-family: Montserrat, serif;
+}
+
+p {
+    font-family: Montserrat, serif;
+}
+
+.btn-primary {
+    font-family: Montserrat, serif;
+    background-color: #7BAEA3;
+    border-color: #7BAEA3;
+}
+
+.btn-primary:hover {
+    background-color: #7BAEA3;
+    border-color: #487268;
+}
+
+.btn-primary {
+    font-family: Montserrat, serif;
+    background-color: #7BAEA3;
+    border-color: #7BAEA3;
+}
+
+.btn-primary:hover {
+    background-color: #487268;
+    border-color: #487268;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #395a52;
+    background-color: #dcfaf5;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.btn {
+    border-radius: 0;
+}
+
+a {
+    cursor: pointer;
 }
