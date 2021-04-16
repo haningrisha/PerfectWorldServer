@@ -1,6 +1,6 @@
 @font-face {
   font-family: Lovelace;
-  src: url("Lovelace Trial Regular 400.ttf");
+  src: url("LovelaceText-Regular.ttf");
 }
 
 @font-face {
@@ -12,8 +12,42 @@ body {
     font-family: Lovelace, serif;
 }
 
+.montserrat {
+    font-family: Montserrat, serif;
+}
+
+.shadow-meduza {
+    box-shadow: 0 0 1rem rgba(0,0,0,0.8)!important;
+}
+
+.lovelace {
+    font-family: Lovelace, serif;
+}
+
+.hover-green {
+    color: white;
+}
+
+.hover-green:hover {
+    color: #7BAEA3;
+}
+
+.underline {
+    text-decoration: none;
+    padding-bottom:2px;
+    border-bottom:1px solid white;
+}
+
+.underline:hover {
+     border-bottom:1px solid #7BAEA3;
+}
+
 .bg-dark {
-    background-color: #202020!important;
+    background-color: #262626!important;
+}
+
+.bg-light-dark {
+    background-color: #2e2e2e!important;
 }
 
 a {
@@ -54,6 +88,50 @@ p {
 
 .btn {
     border-radius: 0;
+}
+
+.text-green {
+   color: #7BAEA3;
+}
+
+.colour-green {
+    color: #7BAEA3;
+    border-color: #7BAEA3;
+}
+
+.colour-green:hover {
+    background-color: #7BAEA3;
+    border-color: #7BAEA3;
+}
+
+.white {
+    color: white;
+}
+
+.hover-grey:hover {
+    color: #5a5a5a;
+}
+
+.colour-white {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.border-green {
+    border-color: #7BAEA3;
+}
+
+.border-white {
+    border-color: white;
+}
+
+.colour-white:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.p-6 {
+    padding: 6rem!important;
 }
 
 a {

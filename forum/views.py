@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from forum.models import Section
 
-# Create your views here.
+
+def index(request):
+    sections = Section.objects.all()
+    return render(request, "forum/index.html", context={"sections": sections})
