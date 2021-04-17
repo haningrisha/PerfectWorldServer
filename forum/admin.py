@@ -1,3 +1,34 @@
 from django.contrib import admin
+from .models import Section, Subsection, Thread, Article, Message, User
 
-# Register your models here.
+
+class SectionAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description']
+
+
+class SubsectionAdmin(admin.ModelAdmin):
+    list_display = ['name', 'section', 'description']
+
+
+class ThreadAdmin(admin.ModelAdmin):
+    list_display = ['name', 'priority']
+
+
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['header', 'date', 'author', 'thread', 'subsection']
+
+
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ['text', 'date', 'author']
+
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['nick']
+
+
+admin.site.register(Section, SectionAdmin)
+admin.site.register(Subsection, SubsectionAdmin)
+admin.site.register(Thread, ThreadAdmin)
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(Message, MessageAdmin)
+admin.site.register(User)

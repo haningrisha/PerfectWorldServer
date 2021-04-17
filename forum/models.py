@@ -3,6 +3,8 @@ from django.db import models
 
 class User(models.Model):
     nick = models.CharField(max_length=180)
+    date_created = models.DateTimeField(auto_now_add=True)
+    avatar = models.ImageField(upload_to="images/", null=True)
 
     def __str__(self):
         return self.nick

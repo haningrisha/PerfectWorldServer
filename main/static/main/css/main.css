@@ -1,11 +1,11 @@
 @font-face {
   font-family: Lovelace;
-  src: url("LovelaceText-Regular.ttf");
+  src: url("../fonts/LovelaceText-Regular.ttf");
 }
 
 @font-face {
     font-family: Montserrat;
-    src: url("Montserrat-Regular.ttf");
+    src: url("../fonts/Montserrat-Regular.ttf");
 }
 
 body {

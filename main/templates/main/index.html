@@ -5,11 +5,11 @@
 {% endblock %}
 {% block static %}
     {% load static %}
-    <script defer src="{% static "main/main.js" %}"></script>
+    <script defer src="{% static "main/js/main.js" %}"></script>
 {% endblock %}
 {% block content %}
     {% load static %}
-    <div class="position-relative overflow-hidden p-6 text-center bg-light" style="background: no-repeat top/100% url({% static 'main/main.jpg' %})">
+    <div class="position-relative overflow-hidden p-6 text-center bg-light" style="background: no-repeat top/100% url({% static 'main/img/main.jpg' %})">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
       <h1 class="display-4 fw-normal">Perfect World</h1>
       <p class="lead fw-normal">Perfect World server</p>
@@ -17,7 +17,6 @@
 {#      <a class="btn btn-outline-secondary" href="#">Скачать клиент</a>#}
 {#      <a class="btn btn-primary" id="register-btn">Регистрация</a>#}
       <a class="btn btn-primary" href="#">Скачать клиент</a>
-        {% load static %}
     </div>
     </div>
     <ul class="nav justify-content-center bg-light-dark text-green shadow-meduza">
