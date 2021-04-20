@@ -8,7 +8,7 @@ class SectionList(generic.ListView):
     context_object_name = "sections"
 
 
-class SubsectionList(generic.DeleteView):
+class SubsectionDetail(generic.DeleteView):
     model = Subsection
     template_name = "forum/subsection.html"
     context_object_name = "subsection"

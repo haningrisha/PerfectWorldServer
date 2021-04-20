@@ -106,6 +106,15 @@ p {
     color: #5a5a5a;
 }
 
+.green-link {
+    color: white;
+    text-decoration: none;
+}
+
+.green-link:hover {
+    color: #7BAEA3;
+}
+
 .colour-white {
     color: #ffffff;
     border-color: #ffffff;

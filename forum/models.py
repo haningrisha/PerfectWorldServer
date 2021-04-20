@@ -28,7 +28,7 @@ class Subsection(models.Model):
 
 
 class Thread(models.Model):
-    # analog of tags
+    # analog of tag
     name = models.CharField(max_length=180)
     priority = models.IntegerField()
 
@@ -48,10 +48,12 @@ class Article(models.Model):
         return self.header
 
 
-class Message(models.Model):
+class Comment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    response_to = models.OneToOneField('self', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.text

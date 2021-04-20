@@ -55,8 +55,10 @@
                     </div>
                 </div>
                <div class="col">
-                  <h5 class="mb-1 white">{{ subsection.name }}</h5>
-                    <p class="mb-1 white">{{ subsection.description }}</p>
+                   <a class="green-link" href="{% url "forum:subsection" subsection.id %}">
+                  <h5 class="mb-1">{{ subsection.name }}</h5>
+                    <p class="mb-1">{{ subsection.description }}</p>
+                   </a>
                </div>
                   <div class="col">
                <div class="d-flex justify-content-end align-items-center h-100">

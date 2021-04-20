@@ -1,10 +1,40 @@
 {% extends "base.html" %}
 
+{% block static %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "forum/forum.css" %}">
+{%  endblock %}
+
 {% block content %}
     <div class="container">
-        {% for message in article%} {# TODO: добавить message #}
-
-        {% endfor %}
-
+    <>
+    <div class="list-group mb-3">
+        <div class="list-group-item border-white montserrat bg-light-dark">
+            <h1 class="text-white">{{ article.header }}</h1>
+            <p class="text-white">{{ article.text }}</p>
+        </div>
     </div>
+    <h5 class="montserrat text-white">Ответы</h5>
+    <div class="list-group"></div>
+    {% for comment in article.comment_set.all%} {# TODO: добавить message #}
+        <div class="list-group-item border-white montserrat bg-light-dark">
+            <div class="row">
+                <div class="col-1">
+                    <img src="{{ comment.author.avatar.url }}" class="img-rounded img-avatar" alt="{{ comment.author.nick }}">
+                </div>
+                <div class="col-3">
+                    <p class="text-white montserrat">{{ comment.author.nick }}</p>
+                </div>
+                <div class="col-3">
+                    <p class="text-white montserrat">{{ comment.date }}</p>
+                </div>
+            </div>
+            <p class="text-white">{{ comment.text }}</p>
+        {% if comment.response_to %}
+            <p class="text-white" style="background: #99cc66">{{ comment.response_to.text }}</p>
+        {% endif %}
+        </div>
+    {% endfor %}
+    </div>>
+
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Section, Subsection, Thread, Article, Message, User
+from .models import Section, Subsection, Thread, Article, Comment, User
 
 
 class SectionAdmin(admin.ModelAdmin):
@@ -30,5 +30,5 @@ admin.site.register(Section, SectionAdmin)
 admin.site.register(Subsection, SubsectionAdmin)
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Message, MessageAdmin)
+admin.site.register(Comment, MessageAdmin)
 admin.site.register(User)
