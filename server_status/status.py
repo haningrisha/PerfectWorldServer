@@ -3,7 +3,7 @@ import mysql.connector
 
 if __name__ == '__main__':
     try:
-        cnx = mysql.connector.connect(user='root', passwd='server2021',
+        cnx = mysql.connector.connect(user='root', passwd='3c4V523RdtBM',
                                       host='45.90.46.29', port='31001')
     except mysql.connector.errorcode as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
