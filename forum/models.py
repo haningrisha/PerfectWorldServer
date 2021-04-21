@@ -53,7 +53,7 @@ class Comment(models.Model):
     text = models.TextField()
     article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    response_to = models.OneToOneField('self', on_delete=models.CASCADE, null=True)
+    response_to = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.text

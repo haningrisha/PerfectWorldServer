@@ -18,7 +18,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ['header', 'date', 'author', 'thread', 'subsection']
 
 
-class MessageAdmin(admin.ModelAdmin):
+class CommentAdmin(admin.ModelAdmin):
     list_display = ['text', 'date', 'author']
 
 
@@ -30,5 +30,5 @@ admin.site.register(Section, SectionAdmin)
 admin.site.register(Subsection, SubsectionAdmin)
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Comment, MessageAdmin)
+admin.site.register(Comment, CommentAdmin)
 admin.site.register(User)

@@ -1,0 +1,33 @@
+.col-half {
+  width: 3.33%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.message-avatar {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mb-comment {
+  margin-bottom: 0.6rem;
+}
+
+.font-comment-mid {
+  font-size: 0.8rem;
+}
+
+.font-comment-sm {
+  font-size: 0.6rem;
+}
+
+.col-big {
+  width: 95%;
+}
+
+hr {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  border: 0;
+  border-top: 1px solid rgb(255, 255, 255);
+}

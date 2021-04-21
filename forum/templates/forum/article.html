@@ -3,6 +3,7 @@
 {% block static %}
     {% load static %}
     <link rel="stylesheet" href="{% static "forum/forum.css" %}">
+    <link rel="stylesheet" href="{% static "forum/article.css" %}">
 {%  endblock %}
 
 {% block content %}
@@ -16,24 +17,60 @@
     </div>
     <h5 class="montserrat text-white">Ответы</h5>
     <div class="list-group"></div>
-    {% for comment in article.comment_set.all%} {# TODO: добавить message #}
+    {% for comment in article.comment_set.all%}
+        {% if not comment.response_to %}
         <div class="list-group-item border-white montserrat bg-light-dark">
+        {# comment start #}
+
             <div class="row">
-                <div class="col-1">
-                    <img src="{{ comment.author.avatar.url }}" class="img-rounded img-avatar" alt="{{ comment.author.nick }}">
+                <div class="col-sm-1 col-half">
+                    <img src="{{ comment.author.avatar.url }}" class="img-rounded message-avatar" alt="{{ comment.author.nick }}">
                 </div>
-                <div class="col-3">
-                    <p class="text-white montserrat">{{ comment.author.nick }}</p>
+                <div class="col-3 col-big">
+                    <div class="row"><p class="montserrat mb-comment font-comment-mid text-green">{{ comment.author.nick }}</p></div>
+                    <div class="row"><p class="text-white mb-comment">{{ comment.text }}</p></div>
+                    <div class="row justify-content-between">
+                        <div class="col-3">
+                            <p class="text-white montserrat mb-comment font-comment-sm">{{ comment.date }}</p>
+                        </div>
+                        <div class="col-1">
+                            <a href="#collapse{{ forloop.counter }}" class="green-link font-comment-sm collapsed" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" role="button" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                                Ответить
+                            </a>
+                        </div>
+
+                    </div>
+                    {% if comment.comment_set %}
+                        {% for response in comment.comment_set.all %}
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-1 col-half">
+                                    <img src="{{ response.author.avatar.url }}" class="img-rounded message-avatar" alt="{{ response.author.nick }}">
+                                </div>
+                                <div class="col-3 col-big">
+                                    <div class="row"><p class="montserrat mb-comment font-comment-mid text-green">{{ response.author.nick }}</p></div>
+                                    <div class="row"><p class="text-white mb-comment">{{ response.text }}</p></div>
+                                    <div class="row"><p class="text-white montserrat mb-comment font-comment-sm">{{ response.date }}</p></div>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
-                <div class="col-3">
-                    <p class="text-white montserrat">{{ comment.date }}</p>
+                <div class="collapse" id="collapse{{ forloop.counter }}">
+                     <form class="form-inline">
+                      <div class="form-group mx-sm-3 mb-2">
+                        <input type="password" class="form-control" id="inputPassword2" placeholder="Ответ">
+                      </div>
+                      <button type="submit" class="btn btn-primary mb-2">Ответить</button>
+                    </form>
                 </div>
             </div>
-            <p class="text-white">{{ comment.text }}</p>
-        {% if comment.response_to %}
-            <p class="text-white" style="background: #99cc66">{{ comment.response_to.text }}</p>
-        {% endif %}
+
+{# comment end #}
         </div>
+        {% endif %}
+
     {% endfor %}
     </div>>
 
