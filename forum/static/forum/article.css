@@ -31,3 +31,11 @@ hr {
   border: 0;
   border-top: 1px solid rgb(255, 255, 255);
 }
+
+.col-90 {
+  width: 88%;
+}
+
+.col-10 {
+  width: 8%;
+}
