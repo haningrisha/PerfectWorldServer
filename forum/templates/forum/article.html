@@ -1,139 +1,204 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block static %} {% load static %} <link
+rel="stylesheet" href="{% static "forum/forum.css" %}"> <link rel="stylesheet"
+href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
+<div class="container">
+  <div class="list-group mb-3">
+    <div class="list-group-item border-white montserrat bg-light-dark">
+      <div class="row">
+        <div class="col-half">
+          <img
+            src="{{ article.author.avatar.url }}"
+            class="img-rounded message-avatar"
+            alt="{{ article.author.nick }}"
+          />
+        </div>
+        <div class="col-90">
+          <h1 class="text-white">{{ article.header }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <p class="text-white">{{ article.text }}</p>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-3">
+          <p class="text-white font-comment-sm mb-auto mt-auto">
+            {{ article.date }}
+          </p>
+        </div>
+      </div>
+    </div>
 
-{% block static %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static "forum/forum.css" %}">
-    <link rel="stylesheet" href="{% static "forum/article.css" %}">
-{%  endblock %}
+    <form class="form-inline">
+      <div class="form-group mb-2 mt-3">
+        <div class="row">
+          <div class="col-9 col-90">
+            <input
+              class="form-control"
+              id="inputPassword2"
+              placeholder="Ответ"
+            />
+          </div>
+          <div class="col-2 col-10">
+            <button type="submit" class="btn btn-primary mb-2">Ответить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <h5 class="montserrat text-white">Ответы</h5>
+  <div class="list-group"></div>
+  {% for comment in article.comment_set.all%} {% if not comment.response_to %}
+  <div class="list-group-item border-white montserrat bg-light-dark">
+    {# comment start #}
 
-{% block content %}
-    <div class="container">
-    <div class="list-group mb-3">
-        <div class="list-group-item border-white montserrat bg-light-dark">
+    <div class="row">
+      <div class="col-sm-1 col-half">
+        <img
+          src="{{ comment.author.avatar.url }}"
+          class="img-rounded message-avatar"
+          alt="{{ comment.author.nick }}"
+        />
+      </div>
+      <div class="col-3 col-big">
+        <div class="row">
+          <p class="montserrat mb-comment font-comment-mid text-green">
+            {{ comment.author.nick }}
+          </p>
+        </div>
+        <div class="row">
+          <p class="text-white mb-comment">{{ comment.text }}</p>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-3">
+            <p class="text-white montserrat mb-comment font-comment-sm">
+              {{ comment.date }}
+            </p>
+          </div>
+          <div class="col-1">
+          <div class="list-group">
+            <a
+              href="#list-comment{{ forloop.counter }}"
+              class="green-link font-comment-sm collapsed"
+              data-bs-toggle="list"
+              data-bs-target="#list-comment{{ forloop.counter }}"
+              role="button"
+              aria-expanded="false"
+              aria-controls="list-comment{{ forloop.counter }}"
+            >
+              Ответить
+            </a>
+            </div>
+          </div>
+        </div>
+        {% if comment.comment_set %} 
+        {% for response in comment.comment_set.all %}
+        <hr />
+        <div class="row">
+          <div class="col-sm-1 col-half">
+            <img
+              src="{{ response.author.avatar.url }}"
+              class="img-rounded message-avatar"
+              alt="{{ response.author.nick }}"
+            />
+          </div>
+          <div class="col-3 col-big">
             <div class="row">
-                <div class="col-half"><img src="{{ article.author.avatar.url }}" class="img-rounded message-avatar" alt="{{ article.author.nick }}"></div>
-                <div class="col-90"><h1 class="text-white">{{ article.header }}</h1></div>
+              <p class="montserrat mb-comment font-comment-mid text-green">
+                {{ response.author.nick }}
+              </p>
             </div>
             <div class="row">
-                <p class="text-white">{{ article.text }}</p>
+              <p class="text-white mb-comment">{{ response.text }}</p>
             </div>
             <div class="row justify-content-between">
-                <div class="col-3">
-                    <p class="text-white font-comment-sm mb-auto mt-auto">{{ article.date }}</p>
+              <div class="col-3">
+                <p class="text-white montserrat mb-comment font-comment-sm">
+                  {{ response.date }}
+                </p>
+              </div>
+              <div class="col-1">
+              <div class="list-group">
+                <a
+                  href="#collapseResponse{{ forloop.parentcounter }}{{ forloop.counter }}"
+                  class="green-link font-comment-sm"
+                  data-bs-toggle="list"
+                  data-bs-target="#collapseResponse{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                  role="button"
+                  aria-controls="collapseResponse{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                  role="tab"
+                >
+                  Ответить
+                </a>
                 </div>
-                <div class="col-1">
-                       <a href="#collapseMain" class="green-link font-comment-sm collapsed" data-bs-toggle="collapse" data-bs-target="#collapseMain" role="button" aria-expanded="false" aria-controls="collapseMain">
-                           Ответить
-                       </a>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
+        {% endfor %}
 
-<div class="collapse" id="collapseMain">
-                     <form class="form-inline">
-                      <div class="form-group mb-2 mt-3">
-                          <div class="row">
-                              <div class="col-9 col-90">
-                                  <input class="form-control" id="inputPassword2" placeholder="Ответ">
-                              </div>
-                              <div class="col-2 col-10">
-                                  <button type="submit" class="btn btn-primary mb-2">Ответить</button>
-                              </div>
-                          </div>
-                      </div>
-                    </form>
-                </div>
-
-    </div>
-    <h5 class="montserrat text-white">Ответы</h5>
-    <div class="list-group"></div>
-    {% for comment in article.comment_set.all%}
-        {% if not comment.response_to %}
-        <div class="list-group-item border-white montserrat bg-light-dark">
-        {# comment start #}
-
-            <div class="row">
-                <div class="col-sm-1 col-half">
-                    <img src="{{ comment.author.avatar.url }}" class="img-rounded message-avatar" alt="{{ comment.author.nick }}">
-                </div>
-                <div class="col-3 col-big">
-                    <div class="row"><p class="montserrat mb-comment font-comment-mid text-green">{{ comment.author.nick }}</p></div>
-                    <div class="row"><p class="text-white mb-comment">{{ comment.text }}</p></div>
-                    <div class="row justify-content-between">
-                        <div class="col-3">
-                            <p class="text-white montserrat mb-comment font-comment-sm">{{ comment.date }}</p>
-                        </div>
-                        <div class="col-1">
-                            <a href="#collapse{{ forloop.counter }}" class="green-link font-comment-sm collapsed" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" role="button" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
-                                Ответить
-                            </a>
-                        </div>
-
+        <div class="row">
+          <div class="tab-content" id="nav-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="list-comment{{ forloop.counter }}"
+              role="tabpanel"
+              aria-labelledby="list-home-list"
+            >
+              <form class="form-inline">
+                <div class="form-group mb-2 mt-3">
+                  <div class="row">
+                    <div class="col-9 col-90">
+                      <input
+                        class="form-control"
+                        id="inputPassword2"
+                        placeholder="Ответ"
+                      />
                     </div>
-                    {% if comment.comment_set %}
-                        {% for response in comment.comment_set.all %}
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-1 col-half">
-                                    <img src="{{ response.author.avatar.url }}" class="img-rounded message-avatar" alt="{{ response.author.nick }}">
-                                </div>
-                                <div class="col-3 col-big">
-                                    <div class="row"><p class="montserrat mb-comment font-comment-mid text-green">{{ response.author.nick }}</p></div>
-                                    <div class="row"><p class="text-white mb-comment">{{ response.text }}</p></div>
-                                    <div class="row justify-content-between">
-                                        <div class="col-3">
-                                            <p class="text-white montserrat mb-comment font-comment-sm">{{ response.date }}</p>
-                                        </div>
-                                        <div class="col-1">
-                                           <a href="#collapseResponse{{ forloop.counter0 }}" class="green-link font-comment-sm collapsed" data-bs-toggle="collapse" data-bs-target="#collapseResponse{{ forloop.counter0 }}" role="button" aria-expanded="false" aria-controls="collapseResponse{{ forloop.counter0 }}">
-                                               Ответить
-                                           </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <div class="collapse" id="collapseResponse{{ forloop.counter0 }}">
-                                 <form class="form-inline">
-                                  <div class="form-group mb-2 mt-1">
-                                      <div class="row">
-                                          <div class="col-9 col-90">
-                                              <input class="form-control" id="inputPassword2" placeholder="Ответ">
-                                          </div>
-                                          <div class="col-2 col-10">
-                                              <button type="submit" class="btn btn-primary mb-2">Ответить</button>
-                                          </div>
-                                      </div>
-                                  </div>
-                                </form>
-                            </div>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-
+                    <div class="col-2 col-10">
+                      <button type="submit" class="btn btn-primary mb-2">
+                        Ответить
+                      </button>
+                    </div>
+                  </div>
                 </div>
-
-
+              </form>
             </div>
-
-
-{# comment end #}
-        </div>
-            <div class="collapse" id="collapse{{ forloop.counter }}">
-                     <form class="form-inline">
-                      <div class="form-group mb-2 mt-3">
-                          <div class="row">
-                              <div class="col-9 col-90">
-                                  <input class="form-control" id="inputPassword2" placeholder="Ответ">
-                              </div>
-                              <div class="col-2 col-10">
-                                  <button type="submit" class="btn btn-primary mb-2">Ответить</button>
-                              </div>
-                          </div>
-                      </div>
-                    </form>
+            {% for response in comment.comment_set.all %}
+            <div
+              class="tab-pane fade"
+              id="collapseResponse{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+              role="tabpanel"
+            >
+              <form class="form-inline">
+                <div class="form-group mb-2 mt-3">
+                  <div class="row">
+                    <div class="col-9 col-90">
+                      <input
+                        class="form-control"
+                        id="inputPassword2"
+                        value="{{ response.author.nick }}, "
+                      />
+                    </div>
+                    <div class="col-2 col-10">
+                      <button type="submit" class="btn btn-primary mb-2">
+                        Ответить
+                      </button>
+                    </div>
+                  </div>
                 </div>
+              </form>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
         {% endif %}
+      </div>
+    </div>
 
-    {% endfor %}
-    </div>>
-
-{% endblock %}
+    {# comment end #}
+  </div>
+</div>
+  {% endif %} {% endfor %}
+</div>
+> {% endblock %}
