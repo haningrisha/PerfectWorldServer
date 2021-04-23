@@ -3,3 +3,5 @@
 /db.sqlite3
 /.vscode/
 /log/
+/static/bootstrap-5.0.0-beta3/
+/forum/migrations/0001_initial.py

@@ -1,13 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class User(models.Model):
-    nick = models.CharField(max_length=180)
-    date_created = models.DateTimeField(auto_now_add=True)
+# class User(models.Model):
+#     nick = models.CharField(max_length=180)
+#     date_created = models.DateTimeField(auto_now_add=True)
+#     avatar = models.ImageField(upload_to="images/", null=True)
+#
+#     def __str__(self):
+#         return self.nick
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="images/", null=True)
-
-    def __str__(self):
-        return self.nick
 
 
 class Section(models.Model):

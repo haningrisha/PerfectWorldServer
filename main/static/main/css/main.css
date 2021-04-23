@@ -140,3 +140,8 @@ p {
 a {
     cursor: pointer;
 }
+
+.btn-primary:focus {
+    background-color: #7BAEA3;
+    border-color: #7BAEA3;
+}

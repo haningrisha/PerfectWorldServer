@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block nav_battons %}
+    {% if user.is_authenticated %}
+        <form action="{% url 'forum:logout'%}" method="post">{% csrf_token %}
+            <input name="url_from" type="text" style="display: none" value="{{ request.path }}">
+            <button type="submit" class="btn btn-primary" id="register-nav">Выйти</button>
+        </form>
+
+    {% else %}
+        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-outline-light me-2" id="login-nav">Вход</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#registerModal" class="btn btn-primary" id="register-nav">Регистрация</button>
+    {% endif %}
+{% endblock %}
+{% block modal %}
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-dark">
+        <div class="modal-header">
+           <h2 class="text-white">Вход</h2>
+        </div>
+        <div class="modal-body">
+        <form method="post" action="{% url "forum:login" %}">{% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="montserrat mb-2 text-white">Имя пользователя</label>
+            <input  type="text" class="form-control mb-2 montserrat" name="username" id="login_username" placeholder="Имя пользователя">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="montserrat mb-2 text-white">Пароль</label>
+            <input type="password" class="form-control mb-2 montserrat" name="password" id="login_password" placeholder="Пароль">
+          </div>
+            <input type="text" name="url_from" value="{{ request.path }}" style="display: none">
+          <button type="submit" class="btn btn-primary text-white">Войти</button>
+        </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-dark">
+        <div class="modal-header">
+           <h2 class="text-white">Регистрация</h2>
+        </div>
+        <div class="modal-body">
+        <form method="post" action="{% url 'forum:register' %}">{% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="montserrat mb-2 text-white">Имя пользователя</label>
+            <input class="form-control mb-2 montserrat" name="username" id="register_username" placeholder="Имя пользователя">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="montserrat mb-2 text-white">Пароль</label>
+            <input type="password" class="form-control mb-2 montserrat" name="password" id="register_password" placeholder="Пароль">
+          </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1" class="montserrat mb-2 text-white">Пароль</label>
+            <input type="password" class="form-control mb-2 montserrat" name="password_repeat" id="register_password" placeholder="Пароль еще раз">
+          </div>
+            <input type="text" name="url_from" value="{{ request.path }}" style="display: none">
+          <button type="submit" class="btn btn-primary text-white">Войти</button>
+        </form>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

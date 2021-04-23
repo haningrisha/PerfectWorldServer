@@ -34,14 +34,36 @@
         <li></li>
       </ul>
         <span class="navbar-brand nav-link px-2">Online</span>
+        {% block nav_battons %}
         <button type="button" class="btn btn-outline-light me-2" id="login-nav">Вход</button>
         <button type="button" class="btn btn-primary" id="register-nav">Регистрация</button>
+        {% endblock %}
     </div>
   </div>
 </header>
 <main class="bg-dark">
 {% block content %}
 {% endblock %}
+{% block modal %}
+{% endblock %}
+
+{# messages #}
+{% if messages %}
+<div class="position-fixed bottom-0 mb-5 end-0 p-3" style="z-index: 5">
+{% for message in messages %}
+  <div id="toast{{ forloop.counter }}" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Constanta</strong>
+      <button id="closeToast{{ forloop.counter }}" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endif %}
+
     <nav class="navbar fixed-bottom navbar-dark bg-dark">
   <div class="container text-white">
     <a class="navbar-brand montserrat" href="#">Constanta</a>
@@ -53,4 +75,14 @@
 </nav>
 </main>
 </body>
+{% if messages %}
+    {% for message in messages %}
+<script>
+button{{ forloop.counter }} = document.getElementById("closeToast{{ forloop.counter }}")
+button{{ forloop.counter }}.onclick = function() {
+    $('#toast{{ forloop.counter }}').toast('hide')
+}
+</script>
+    {% endfor %}
+{% endif %}
 </html>

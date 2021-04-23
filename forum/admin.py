@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Section, Subsection, Thread, Article, Comment, User
+from .models import Section, Subsection, Thread, Article, Comment, UserProfile
 
 
 class SectionAdmin(admin.ModelAdmin):
@@ -22,13 +22,9 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ['text', 'date', 'author']
 
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['nick']
-
-
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Subsection, SubsectionAdmin)
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(User)
+admin.site.register(UserProfile)

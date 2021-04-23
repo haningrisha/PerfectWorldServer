@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% block static %} {% load static %} <link
+{% extends "forum/forum_base.html" %}
+{% block static %}
+    {% load static %} <link
 rel="stylesheet" href="{% static "forum/forum.css" %}"> <link rel="stylesheet"
 href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
 <div class="container">
@@ -7,9 +9,9 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
       <div class="row">
         <div class="col-half">
           <img
-            src="{{ article.author.avatar.url }}"
+            src="{{ article.author.userprofile.avatar.url }}"
             class="img-rounded message-avatar"
-            alt="{{ article.author.nick }}"
+            alt="{{ article.author.username }}"
           />
         </div>
         <div class="col-90">
@@ -21,19 +23,30 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
       </div>
       <div class="row justify-content-between">
         <div class="col-3">
-          <p class="text-white font-comment-sm mb-auto mt-auto">
-            {{ article.date }}
-          </p>
+            <div class="row">
+                <div class="col-5">
+                    <p class="text-green font-comment-sm">
+                        {{ article.author.username }}
+                    </p>
+                </div>
+                <div class="col-5">
+                <p class="text-white font-comment-sm mb-auto mt-auto">
+                    {{ article.date }}
+                </p>
+                </div>
+            </div>
         </div>
       </div>
     </div>
-
-    <form class="form-inline">
+    {% if user.is_authenticated %}
+    <form class="form-inline" method="post" action="{% url 'forum:comment' article.id user.id %}">
+        {% csrf_token %}
       <div class="form-group mb-2 mt-3">
         <div class="row">
           <div class="col-9 col-90">
             <input
               class="form-control"
+              name="text"
               id="inputPassword2"
               placeholder="Ответ"
             />
@@ -44,6 +57,15 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
         </div>
       </div>
     </form>
+        {% else %}
+        <div class="row">
+            <p class="text-white mt-3 mb-3">
+                <a class="underline hover-green" data-bs-toggle="modal" data-bs-target="#loginModal">Войдите</a>
+             или
+                <a class="underline hover-green" data-bs-toggle="modal" data-bs-target="#registerModal">зарегистрируйтесь</a>
+             чтобы оставить комментарий</p>
+        </div>
+      {% endif %}
   </div>
   <h5 class="montserrat text-white">Ответы</h5>
   <div class="list-group"></div>
@@ -54,15 +76,15 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
     <div class="row">
       <div class="col-sm-1 col-half">
         <img
-          src="{{ comment.author.avatar.url }}"
+          src="{{ comment.author.userprofile.avatar.url }}"
           class="img-rounded message-avatar"
-          alt="{{ comment.author.nick }}"
+          alt="{{ comment.author.username }}"
         />
       </div>
       <div class="col-3 col-big">
         <div class="row">
           <p class="montserrat mb-comment font-comment-mid text-green">
-            {{ comment.author.nick }}
+            {{ comment.author.username }}
           </p>
         </div>
         <div class="row">
@@ -75,6 +97,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
             </p>
           </div>
           <div class="col-1">
+              {% if user.is_authenticated %}
           <div class="list-group">
             <a
               href="#list-comment{{ forloop.counter }}"
@@ -88,6 +111,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
               Ответить
             </a>
             </div>
+                  {% endif %}
           </div>
         </div>
         {% if comment.comment_set %} 
@@ -96,15 +120,15 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
         <div class="row">
           <div class="col-sm-1 col-half">
             <img
-              src="{{ response.author.avatar.url }}"
+              src="{{ response.author.userprofile.avatar.url }}"
               class="img-rounded message-avatar"
-              alt="{{ response.author.nick }}"
+              alt="{{ response.author.username }}"
             />
           </div>
           <div class="col-3 col-big">
             <div class="row">
               <p class="montserrat mb-comment font-comment-mid text-green">
-                {{ response.author.nick }}
+                {{ response.author.username }}
               </p>
             </div>
             <div class="row">
@@ -117,19 +141,20 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
                 </p>
               </div>
               <div class="col-1">
+                  {% if user.is_authenticated %}
               <div class="list-group">
                 <a
                   href="#collapseResponse{{ forloop.parentcounter }}{{ forloop.counter }}"
                   class="green-link font-comment-sm"
                   data-bs-toggle="list"
                   data-bs-target="#collapseResponse{{ forloop.parentloop.counter }}{{ forloop.counter }}"
-                  role="button"
                   aria-controls="collapseResponse{{ forloop.parentloop.counter }}{{ forloop.counter }}"
                   role="tab"
                 >
                   Ответить
                 </a>
                 </div>
+                  {% endif %}
               </div>
             </div>
           </div>
@@ -139,17 +164,18 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
         <div class="row">
           <div class="tab-content" id="nav-tabContent">
             <div
-              class="tab-pane fade show active"
+              class="tab-pane fade"
               id="list-comment{{ forloop.counter }}"
               role="tabpanel"
               aria-labelledby="list-home-list"
             >
-              <form class="form-inline">
+              <form class="form-inline" method="post">
                 <div class="form-group mb-2 mt-3">
                   <div class="row">
                     <div class="col-9 col-90">
                       <input
                         class="form-control"
+                        name="text"
                         id="inputPassword2"
                         placeholder="Ответ"
                       />
@@ -175,8 +201,9 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
                     <div class="col-9 col-90">
                       <input
                         class="form-control"
-                        id="inputPassword2"
-                        value="{{ response.author.nick }}, "
+                        id="inputComment{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                        name="text"
+                        value="{{ response.author.username }}, "
                       />
                     </div>
                     <div class="col-2 col-10">
@@ -198,7 +225,6 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
 
     {# comment end #}
   </div>
-</div>
   {% endif %} {% endfor %}
 </div>
 > {% endblock %}
