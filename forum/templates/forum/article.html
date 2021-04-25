@@ -128,7 +128,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
           <div class="col-3 col-big">
             <div class="row">
               <p class="montserrat mb-comment font-comment-mid text-green">
-                {{ response.author.username }}
+                {{ response.author.username }} {% if response.response_to_author %}в ответ {{ response.response_to_author.username }}{% endif %}
               </p>
             </div>
             <div class="row">
@@ -160,7 +160,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
           </div>
         </div>
         {% endfor %}
-
+        {# Comment response form #}
         <div class="row">
           <div class="tab-content" id="nav-tabContent">
             <div
@@ -169,14 +169,15 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
               role="tabpanel"
               aria-labelledby="list-home-list"
             >
-              <form class="form-inline" method="post">
+              <form class="form-inline" method="post" action="{% url 'forum:response' article.id user.id comment.id %}">
+                  {% csrf_token %}
                 <div class="form-group mb-2 mt-3">
                   <div class="row">
                     <div class="col-9 col-90">
                       <input
                         class="form-control"
                         name="text"
-                        id="inputPassword2"
+                        id="inputResponse{{ forloop.counter }}"
                         placeholder="Ответ"
                       />
                     </div>
@@ -189,13 +190,15 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
                 </div>
               </form>
             </div>
+          {# Response response form #}
             {% for response in comment.comment_set.all %}
             <div
               class="tab-pane fade"
               id="collapseResponse{{ forloop.parentloop.counter }}{{ forloop.counter }}"
               role="tabpanel"
             >
-              <form class="form-inline">
+              <form class="form-inline" method="post" action="{% url 'forum:response_reply' article.id user.id comment.id response.author.id %}">
+                  {% csrf_token %}
                 <div class="form-group mb-2 mt-3">
                   <div class="row">
                     <div class="col-9 col-90">

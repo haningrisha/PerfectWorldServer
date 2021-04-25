@@ -26,14 +26,21 @@ class ArticleDetail(generic.DeleteView):
     context_object_name = "article"
 
 
-def add_comment(request, article_id, author_id):
+def add_comment(request, article_id, author_id, response_to_id=None, response_to_author_id=None):
     article = get_object_or_404(Article, pk=article_id)
     author = get_object_or_404(User, pk=author_id)
     comment = Comment()
     comment.article = article
     comment.author = author
     comment.text = request.POST["text"]
+    if response_to_id is not None:
+        response_to = get_object_or_404(Comment, pk=response_to_id)
+        comment.response_to = response_to
+    if response_to_author_id is not None:
+        response_to_author = get_object_or_404(User, pk=response_to_author_id)
+        comment.response_to_author = response_to_author
     comment.save()
+    messages.success(request, f"Комментарий \"{comment}\" добавлен")
     return HttpResponseRedirect(reverse('forum:article', args=(article.id,)))
 
 
