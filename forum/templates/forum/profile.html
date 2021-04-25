@@ -1,10 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "forum/forum_base.html" %}
 
-</body>
-</html>
+{% block static %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "forum/forum.css" %}">
+    <link rel="stylesheet" href="{% static "forum/article.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-3">
+                <img
+                  src="{{ user.userprofile.avatar.url }}"
+                  class="rounded profile-avatar mx-auto d-block"
+                  alt="{{ user.username }}"
+                />
+            <h2 class="text-center text-white mt-3 montserrat">{{ user.username }}</h2>
+        </div>
+        <div class="col-7 align-content-center">
+            <div class="row">
+                <div class="list-group list-group-horizontal mb-3 p-2" id="list-tab" role="tablist">
+                  <a class="list-group-item list-group-item-action active" id="list-articles-list" data-bs-toggle="list" href="#list-articles" role="tab" aria-controls="home">Статьи</a>
+                  <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Комментарии</a>
+                  <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                  <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+              </div>
+                <div class="tab-content p-2" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="list-articles" role="tabpanel" aria-labelledby="list-articles-list">
+                      {% for article in user_profile.article_set.all %}
+                          <div class="list-group-item border-white montserrat bg-light-dark">
+                          <div class="row">
+                            <div class="col-90">
+                              <h1 class="text-white">{{ article.header }}</h1>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <p class="text-white">{{ article.text }}</p>
+                          </div>
+                          <div class="row justify-content-between">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="text-green font-comment-sm">
+                                            {{ article.author.username }}
+                                        </p>
+                                    </div>
+                                    <div class="col-5">
+                                    <p class="text-white font-comment-sm mb-auto mt-auto">
+                                        {{ article.date }}
+                                    </p>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                  </div>
+                  <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                      {% for comment in user_profile.comment_set.all %}
+                              <div class="list-group-item border-white montserrat bg-light-dark">
+                                 <div class="row">
+                                  <div class="col-sm-1 col-half">
+                                    <img
+                                      src="{{ comment.author.userprofile.avatar.url }}"
+                                      class="img-rounded rounded message-avatar"
+                                      alt="{{ article.author.username }}"
+                                    />
+                                  </div>
+                                  <div class="col-3 col-big">
+                                    <div class="row">
+                                      <p class="montserrat mb-comment font-comment-mid text-green">
+                                        {{ comment.author.username }}
+                                      </p>
+                                    </div>
+                                    <div class="row">
+                                      <p class="text-white mb-comment">{{ comment.text }}</p>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                      <div class="col-3">
+                                        <p class="text-white montserrat mb-comment font-comment-sm">
+                                          {{ comment.date }}
+                                        </p>
+                                      </div>
+{#                                      <div class="col-1">#}
+{#                                          {% if user.is_authenticated %}#}
+{#                                      <div class="list-group">#}
+{#                                        <a#}
+{#                                          href="#list-comment{{ forloop.counter }}"#}
+{#                                          class="green-link font-comment-sm collapsed"#}
+{#                                          data-bs-toggle="list"#}
+{#                                          data-bs-target="#list-comment{{ forloop.counter }}"#}
+{#                                          role="button"#}
+{#                                          aria-expanded="false"#}
+{#                                          aria-controls="list-comment{{ forloop.counter }}"#}
+{#                                        >#}
+{#                                          Ответить#}
+{#                                        </a>#}
+{#                                        </div>#}
+{#                                              {% endif %}#}
+{#                                      </div>#}
+                                    </div>
+                              </div>
+                                 </div>
+                              </div>
+                          {% endfor %}
+                  </div>
+                  <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                  <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+                </div>
+            </div>
+        </div>
+            </div>
+    </div>
+{% endblock %}

@@ -1,10 +1,9 @@
 from django.views import generic
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from forum.models import Section, Subsection, Article, User, Comment
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 
@@ -84,3 +83,8 @@ def register_view(request):
     else:
         messages.error(request, "Пароли не совпадают")
     return HttpResponseRedirect(url_from)
+
+
+def profile(request, user_id):
+    user_profile = get_object_or_404(User, pk=user_id)
+    return render(request, "forum/profile.html", context={"user_profile": user_profile})

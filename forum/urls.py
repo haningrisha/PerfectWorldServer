@@ -1,5 +1,6 @@
 from django.urls import path
-from forum.views import SectionList, ArticleDetail, SubsectionDetail, add_comment, login_view, logout_view, register_view
+from forum.views import SectionList, ArticleDetail, SubsectionDetail, add_comment, login_view, \
+    logout_view, register_view, profile
 
 app_name = "forum"
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
          add_comment, name="response_reply"),
     path("login", login_view, name="login"),
     path("logout", logout_view, name="logout"),
-    path("register", register_view, name="register")
+    path("register", register_view, name="register"),
+    path("profile/<int:user_id>", profile, name="profile")
 ]

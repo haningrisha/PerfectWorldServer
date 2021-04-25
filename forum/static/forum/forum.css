@@ -1,4 +1,18 @@
 .img-avatar {
-    max-height: 50px;
-    overflow: hidden;
+    height: 50px;
+    width: 50px;
+    overflow: no-display;
+}
+
+.profile-avatar {
+    width: 90%;
+    height: auto;
+    overflow: no-display;
+}
+
+.img-div {
+    width: 100%;
+    padding-bottom: 100%;
+    background-size: cover;
+    background-position: center;
 }
