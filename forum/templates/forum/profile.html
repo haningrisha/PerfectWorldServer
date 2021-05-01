@@ -31,7 +31,7 @@
                           <div class="list-group-item border-white montserrat bg-light-dark">
                           <div class="row">
                             <div class="col-90">
-                              <h1 class="text-white">{{ article.header }}</h1>
+                              <a href="{% url "forum:article" article.id %}" class="green-link h1">{{ article.header }}</a>
                             </div>
                           </div>
                           <div class="row">
@@ -59,7 +59,7 @@
                   <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                       {% for comment in user_profile.comment_set.all %}
                               <div class="list-group-item border-white montserrat bg-light-dark">
-                                 <div class="row">
+                                 <div class="row px-1">
                                   <div class="col-sm-1 col-half">
                                     <img
                                       src="{{ comment.author.userprofile.avatar.url }}"
@@ -74,7 +74,7 @@
                                       </p>
                                     </div>
                                     <div class="row">
-                                      <p class="text-white mb-comment">{{ comment.text }}</p>
+                                      <a href="{% url 'forum:article' comment.article.id %}" class="green-link mb-comment">{{ comment.text }}</a>
                                     </div>
                                     <div class="row justify-content-between">
                                       <div class="col-3">

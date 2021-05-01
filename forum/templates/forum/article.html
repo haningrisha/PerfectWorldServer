@@ -1,20 +1,26 @@
 {% extends "forum/forum_base.html" %}
+
 {% block static %}
-    {% load static %} <link
-rel="stylesheet" href="{% static "forum/forum.css" %}"> <link rel="stylesheet"
-href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "forum/forum.css" %}">
+    <link rel="stylesheet" href="{% static "forum/article.css" %}">
+{% endblock %}
+
+{% block content %}
 <div class="container">
   <div class="list-group mb-3">
     <div class="list-group-item border-white montserrat bg-light-dark">
-      <div class="row">
-        <div class="col-half">
-          <img
-            src="{{ article.author.userprofile.avatar.url }}"
-            class="img-rounded message-avatar"
-            alt="{{ article.author.username }}"
-          />
+      <div class="row px-1">
+        <div class="col-1 col-half">
+            <div class="img-div rounded">
+              <img
+                src="{{ article.author.userprofile.avatar.url }}"
+                class="img-rounded rounded message-avatar"
+                alt="{{ article.author.username }}"
+              />
+            </div>
         </div>
-        <div class="col-90">
+        <div class="col-90 mx-2">
           <h1 class="text-white">{{ article.header }}</h1>
         </div>
       </div>
@@ -73,13 +79,15 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
   <div class="list-group-item border-white montserrat bg-light-dark">
     {# comment start #}
 
-    <div class="row">
+    <div class="row px-1">
       <div class="col-sm-1 col-half">
+          <div class="img-div-md rounded">
         <img
           src="{{ comment.author.userprofile.avatar.url }}"
           class="img-rounded rounded message-avatar"
           alt="{{ comment.author.username }}"
         />
+          </div>
       </div>
       <div class="col-3 col-big">
         <div class="row">
@@ -117,13 +125,15 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
         {% if comment.comment_set %} 
         {% for response in comment.comment_set.all %}
         <hr />
-        <div class="row">
-          <div class="col-sm-1 col-half">
-            <img
-              src="{{ response.author.userprofile.avatar.url }}"
-              class="img-rounded message-avatar"
-              alt="{{ response.author.username }}"
-            />
+        <div class="row px-3">
+          <div class="col-1 col-half">
+              <div class="img-div-sm rounded">
+                <img
+                  src="{{ response.author.userprofile.avatar.url }}"
+                  class="img-rounded rounded message-avatar"
+                  alt="{{ response.author.username }}"
+                />
+              </div>
           </div>
           <div class="col-3 col-big">
             <div class="row">
@@ -169,6 +179,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
               role="tabpanel"
               aria-labelledby="list-home-list"
             >
+                {% if user.is_authenticated %}
               <form class="form-inline" method="post" action="{% url 'forum:response' article.id user.id comment.id %}">
                   {% csrf_token %}
                 <div class="form-group mb-2 mt-3">
@@ -189,6 +200,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
                   </div>
                 </div>
               </form>
+                   {% endif %}
             </div>
           {# Response response form #}
             {% for response in comment.comment_set.all %}
@@ -197,6 +209,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
               id="collapseResponse{{ forloop.parentloop.counter }}{{ forloop.counter }}"
               role="tabpanel"
             >
+            {% if user.is_authenticated %}
               <form class="form-inline" method="post" action="{% url 'forum:response_reply' article.id user.id comment.id response.author.id %}">
                   {% csrf_token %}
                 <div class="form-group mb-2 mt-3">
@@ -217,6 +230,7 @@ href="{% static "forum/article.css" %}"> {% endblock %} {% block content %}
                   </div>
                 </div>
               </form>
+            {% endif %}
             </div>
             {% endfor %}
           </div>

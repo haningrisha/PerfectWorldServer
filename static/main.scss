@@ -1,5 +1,25 @@
+$green: #7BAEA4;
+
 $accordion-icon-color: white;
-$accordion-icon-active-color: #7BAEA4;
+$accordion-icon-active-color: $green;
+
+$dark: #262626;
+
+$list-group-color:                  $green;
+$list-group-bg:                     dark;
+$list-group-border-color:           rgba($green, .5);
+$list-group-border-radius:          0;
+
+$list-group-hover-bg:               $green;
+$list-group-active-color:           $dark;
+$list-group-active-bg:              $green;
+$list-group-active-border-color:    rgba($green, .5);
+
+$list-group-action-color:           $dark;
+$list-group-action-hover-color:     $list-group-action-color;
+
+$list-group-action-active-color:    $dark;
+$list-group-action-active-bg:       $green;
 
 @import "./bootstrap-5.0.0-beta3/scss/bootstrap";
 

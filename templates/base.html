@@ -14,7 +14,7 @@
     {% block static %}
     {% endblock %}
 </head>
-<body>
+<body class="bg-dark">
 {# Header #}
 <header class="p-3 bg-dark text-white">
   <div class="container">
@@ -63,8 +63,8 @@
 {% endfor %}
 </div>
 {% endif %}
-
-    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+</main>
+<nav class="footer navbar navbar-dark bg-dark">
   <div class="container text-white">
     <a class="navbar-brand montserrat" href="#">Constanta</a>
       <a class="nav-link text-white" href="#">О сервере</a>
@@ -73,8 +73,8 @@
       <a class="nav-link text-white" href="#">Форум</a>
   </div>
 </nav>
-</main>
 </body>
+
 {% if messages %}
     {% for message in messages %}
 <script>

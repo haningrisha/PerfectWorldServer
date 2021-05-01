@@ -1,6 +1,7 @@
 from django.views import generic
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
+from forum.forms import RegisterForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from forum.models import Section, Subsection, Article, User, Comment
@@ -58,31 +59,24 @@ def login_view(request):
 
 
 def logout_view(request):
-    if request.method == "POST":
-        url_from = request.POST.get("url_from", "/")
-        logout(request)
-        messages.success(request, "Вы вышли")
-        return HttpResponseRedirect(url_from)
-    elif request.method == "GET":
-        logout(request)
-        messages.success(request, "Вы вышли")
-        return HttpResponseRedirect(reverse('forum:index'))
+    logout(request)
+    messages.success(request, "Вы вышли")
+    return HttpResponseRedirect(reverse('forum:index'))
 
 
-def register_view(request):
-    username = request.POST.get("username")
-    url_from = request.POST.get("url_from")
-    password1 = request.POST.get("password")
-    password2 = request.POST.get("password_repeat")
-    if password1 == password2:
-        user = User()
-        user.username = username
-        user.password = password1
-        user.save()
-        messages.success(request, "Аккаунт успешно создан")
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('forum:index')
     else:
-        messages.error(request, "Пароли не совпадают")
-    return HttpResponseRedirect(url_from)
+        form = RegisterForm()
+    return render(request, 'forum/register.html', {'form': form})
 
 
 def profile(request, user_id):

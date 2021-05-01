@@ -11,8 +11,19 @@
 }
 
 .img-div {
-    width: 100%;
-    padding-bottom: 100%;
-    background-size: cover;
-    background-position: center;
+    width: 4vw;
+    overflow: hidden;
+    height: 4vw;
+}
+
+.img-div-md {
+    width: 3vw;
+    overflow: hidden;
+    height: 3vw;
+}
+
+.img-div-sm {
+    width: 3vw;
+    overflow: hidden;
+    height: 3vw;
 }

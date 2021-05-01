@@ -2,14 +2,35 @@
 
 {% block nav_battons %}
     {% if user.is_authenticated %}
-        <form action="{% url 'forum:logout'%}" method="post">{% csrf_token %}
-            <input name="url_from" type="text" style="display: none" value="{{ request.path }}">
-            <button type="submit" class="btn btn-primary" id="register-nav">Выйти</button>
-        </form>
-
+       <div class="btn-group">
+          <a href="{% url 'forum:profile' user.id %}" class="btn colour-green">
+              <div class="row align-items-center">
+                  <div class="col-7">
+                          {{ user.username }}
+                  </div>
+                  <div class="col-5">
+                    <img
+                      src="{{ user.userprofile.avatar.url }}"
+                      class="img-rounded rounded login-avatar mt-1 mb-1"
+                      alt="{{ user.username }}"
+                    />
+                  </div>
+              </div>
+          </a>
+          <button type="button" class="btn colour-green dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'forum:profile' user.id %}">Личный кабинет</a></li>
+            <li><a class="dropdown-item" href="#">Последние посты</a></li>
+              <li><a class="dropdown-item" href="#">Редактировать профиль</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'forum:logout' %}">Выйти</a></li>
+          </ul>
+        </div>
     {% else %}
         <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-outline-light me-2" id="login-nav">Вход</button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#registerModal" class="btn btn-primary" id="register-nav">Регистрация</button>
+        <a href="{% url 'forum:register' %}" class="btn btn-primary">Регистрация</a>
     {% endif %}
 {% endblock %}
 {% block modal %}
