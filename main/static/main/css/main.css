@@ -32,7 +32,7 @@ body {
 }
 
 .hover-green:hover {
-    color: #7BAEA3;
+    color: #92E28C;
 }
 
 .underline {
@@ -42,15 +42,15 @@ body {
 }
 
 .underline:hover {
-     border-bottom:1px solid #7BAEA3;
+     border-bottom:1px solid #92E28C;
 }
 
 .bg-dark {
-    background-color: #262626!important;
+    background-color: #0E122E!important;
 }
 
 .bg-light-dark {
-    background-color: #2e2e2e!important;
+    background-color: #13173D!important;
 }
 
 a {
@@ -63,42 +63,44 @@ p {
 
 .btn-primary {
     font-family: Montserrat, serif;
-    background-color: #7BAEA3;
-    border-color: #7BAEA3;
+    background-color: #92E28C;
+    border-color: #92E28C;
 }
 
 .btn-primary:hover {
-    background-color: #7BAEA3;
-    border-color: #487268;
+    background-color: #92E28C;
+    border-color: #6eb369;
 }
 
 .btn-primary {
     font-family: Montserrat, serif;
-    background-color: #7BAEA3;
-    border-color: #7BAEA3;
+    background-color: #92E28C;
+    border-color: #92E28C;
+    color: #141414;
 }
 
 .btn-primary:hover {
-    background-color: #487268;
-    border-color: #487268;
+    background-color: #6eb369;
+    border-color: #6eb369;
+    color: #141414;
 }
 
 .btn {
-    border-radius: 0;
+    border-radius: 4px;
 }
 
 .text-green {
-   color: #7BAEA3;
+   color: #92E28C;
 }
 
 .colour-green {
-    color: #7BAEA3;
-    border-color: #7BAEA3;
+    color: #92E28C;
+    border-color: #92E28C;
 }
 
 .colour-green:hover {
-    background-color: #7BAEA3;
-    border-color: #7BAEA3;
+    background-color: #92E28C;
+    border-color: #92E28C;
 }
 
 .white {
@@ -115,7 +117,7 @@ p {
 }
 
 .green-link:hover {
-    color: #7BAEA3;
+    color: #92E28C;
 }
 
 .colour-white {
@@ -124,7 +126,7 @@ p {
 }
 
 .border-green {
-    border-color: #7BAEA3;
+    border-color: #92E28C;
 }
 
 .border-white {
@@ -137,7 +139,7 @@ p {
 }
 
 .p-6 {
-    padding: 6rem!important;
+    padding: 5rem!important;
 }
 
 a {
@@ -145,8 +147,8 @@ a {
 }
 
 .btn-primary:focus {
-    background-color: #7BAEA3;
-    border-color: #7BAEA3;
+    background-color: #92E28C;
+    border-color: #92E28C;
 }
 
 .login-avatar {
@@ -161,4 +163,8 @@ html {
 
 .footer {
     margin-top: auto;
+}
+
+.text-small {
+    font-size: 0.8rem;
 }
