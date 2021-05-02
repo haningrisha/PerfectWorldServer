@@ -27,9 +27,11 @@
       </a> -->
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="{% url 'main:index' %}" class="px-2 text-white lovelace nav-link">Logo</a></li>
+        <li><a href="{% url 'main:index' %}" class="px-2 text-white lovelace nav-link">
+          <img src="{% static 'main/img/logo.png' %}" class="logo" alt="logo">
+        </a></li>
         <li><a class="nav-link px-2 text-white" id="about-server-btn">О сервере</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Начать игру</a></li>
+        <li><a href="{% url 'main:start_game' %}" class="nav-link px-2 text-white">Начать игру</a></li>
           {% block forum_link %}
           <li><a href="{% url 'forum:index' %}" class="nav-link px-2 text-white">Форум</a></li>
           {% endblock %}
@@ -51,8 +53,8 @@
         </li>
       </ul>
         {% block nav_battons %}
-        <button type="button" class="btn btn-primary me-2" id="login-nav">Вход</button>
-        <button type="button" class="btn btn-primary" id="register-nav">Регистрация</button>
+        <button type="button" class="btn btn-primary me-2" id="login-nav">Личный кабинет</button>
+        <!-- <button type="button" class="btn btn-primary" id="register-nav">Регистрация</button> -->
         {% endblock %}
     </div>
   </div>
@@ -121,7 +123,9 @@
         </div> 
         <div class="col-6">
           <ul class="nav mb-2 mt-1 justify-content-end">
-            <li class="lovelace">Logo</li>
+            <li class="lovelace">
+              <img src="{% static 'main/img/logo.png' %}" class="logo" alt="logo">
+            </li>
           </ul>
         </div>
         </div>

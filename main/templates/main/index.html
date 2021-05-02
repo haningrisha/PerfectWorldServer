@@ -13,8 +13,8 @@
     <div class="col-md-6 p-lg-5 mx-auto my-5">
       <h2 class="display-6 fw-normal">Constanta PW</h2>
       <p class="lead fw-normal">1.3.6v x450</p>
-      <a class="btn btn-primary mx-2" id="register-btn">Регистрация</a>
-      <a class="btn btn-primary mx-2" href="#">Скачать клиент</a>
+      <!-- <a class="btn btn-primary mx-2" id="register-btn">Регистрация</a>
+      <a class="btn btn-primary mx-2" href="#">Скачать клиент</a> -->
     </div>
     </div>
     <div class="container">
@@ -30,7 +30,7 @@
                   195 игроков онлайн, без оффлайн котов
                 </div>
                 <div class="row">
-                  <button class="btn btn-primary">Онлайн</button>
+                  <button class="btn btn-primary btn-sm">Онлайн</button>
                 </div>
                 <div class="row text-white">
                   <div class="col-3">
@@ -82,27 +82,31 @@
               <div class="row h3 lovelace mb-4 text-white">
                 Новости
               </div>
-                
+               {% for article in news %}
+                   {% if forloop.counter0 < 2 %}
                 <div class="col-sm-6">
                 <div class="card bg-light-dark shadow-meduza">
-                  <img src="..." class="card-img-top" alt="...">
+                  <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="...">
                   <div class="card-body text-white">
-                    <h5 class="card-title montserrat">Новость 1</h5>
-                    <p class="card-text">Какая-то новость</p>
-                    <a href="#" class="underline hover-green">Подробнее</a>
+                    <h5 class="card-title montserrat">{{ article.header }}</h5>
+                    <p class="card-text">{{ article.text|truncatewords:10 }}</p>
+                    <a href="{% url 'forum:article' article.id %}" class="underline hover-green">Подробнее</a>
                   </div>
                 </div>
                 </div>
-                <div class="col-sm-6">
-                <div class="card bg-light-dark shadow-meduza" >
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title montserrat text-white">Новость 2</h5>
-                    <p class="card-text text-white">Еще какая-то новость</p>
-                    <a href="#" class="underline hover-green">Подробнее</a>>
-                  </div>
-                </div>
-                </div>
+                   {% endif%}
+               {% endfor %}
+
+{#                <div class="col-sm-6">#}
+{#                <div class="card bg-light-dark shadow-meduza" >#}
+{#                  <img src="..." class="card-img-top" alt="...">#}
+{#                  <div class="card-body">#}
+{#                    <h5 class="card-title montserrat text-white">Новость 2</h5>#}
+{#                    <p class="card-text text-white">Еще какая-то новость</p>#}
+{#                    <a href="#" class="underline hover-green">Подробнее</a>>#}
+{#                  </div>#}
+{#                </div>#}
+{#                </div>#}
             </div>
         </div>
     </div>
@@ -111,7 +115,48 @@
         <div class="row md-5 mt-5">
             <div class="row mb-3 text-white h3" id="about-server">О сервере</div>
             <div class="row mt-4 text-white montserrat">
-              Лучший сервер рунета
+              <p>
+                <strong>ConstantaPW</strong> - игровой сервер Perfect World, созданный для того, чтобы дать людям возможность играть и не беспокоиться о вайпах, рисовках, изменениях рейтов, цен и концепции сервера. <br>
+Администрация проекта - активные игроки в Perfect World. 
+В последние годы мы не смогли найти ни одного качественного и хорошего проекта. Все серверы похожи друг на друга: Администрация не разбирается в ключевых механиках, проект на пару месяцев, неработающие ивенты, нарисованные вещи, отсутствие баланса в экономике, тотальное упрощение всех аспектов игры. 
+Видя все это безобразие мы поставили перед собой задачу: создать сервер на котором мы бы сами мечтали играть. <br>
+<br>
+Рейты:<br>
+Опыт х450 <br>
+Дух х450 <br>
+Юани х750 <br>
+<br>
+Основные изменения: <br>
+Версия 1.5.5 downgrade 1.3.6 <br>
+Концепция максимально приближена к 1.3.6 750 таким серверам как Relax, PWNOVA и тд <br>
+GM обладают одинаковыми правами и урезанными правами: <br>
+GM не сможет использовать консольные команды, призывать боссов и выдавать вещи <br>
+Также у GM нет специальных вещей с рисованными статами <br>
+<br>
+Данжи 1.3.6: 
+Полностью переработанный иней, отключен полет <br>
+Переработанная луна, отключен полет <br>
+Стандартный ХХ, отключен полет <br>
+Стандартные 89, 99, 109, включен полет <br>
+Стандартный Гуй Му <br>
+<br>
+Автоивенты: <br>
+Город темных зверей <br>
+Дворец царя драконов <br>
+Осада города драконов <br>
+Осада города истоков <br>
+Ежедневные скачки <br>
+Территориальные войны <br>
+Сундуки на арене города драконов <br>
+Руины в чаще <br>
+В планах добавить конкурс ремесленников <br>
+
+На сервере не будет: <br>
+1. Игровых аккаунтов у администрации проекта <br>
+2. Изменения концепции и баланса, упрощения игрового процесса <br>
+3. Рисованных вещей. Мы не добавим кольца любви, шапки снегурочки, штаны масленицы и ботинки Ивана Купалы. <br>
+
+              </p>
             </div>
         </div>
     </div>

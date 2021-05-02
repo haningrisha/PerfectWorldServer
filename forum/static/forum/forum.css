@@ -4,6 +4,29 @@
     overflow: no-display;
 }
 
+.bg-light-dark {
+    background-color: #ffffff!important;;
+}
+
+.bg-dark {
+    background-color: #ffffff!important;
+}
+
+.colour-green {
+    color: #0E122E;
+    border-color: #0E122E;
+}
+
+.colour-green:hover {
+    background-color: #0E122E;
+    border-color: #0E122E;
+    color: #fff;
+}
+
+.text-green {
+    color: #0E122E;
+}
+
 .profile-avatar {
     width: 90%;
     height: auto;
@@ -26,4 +49,277 @@
     width: 3vw;
     overflow: hidden;
     height: 3vw;
+}
+
+.text-white {
+    color: #000000!important;
+}
+
+.nav-link{
+    color: #141414!important;
+}
+
+.text-grey {
+    color: #3f3f3f;
+}
+
+.card {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.list-group-item {
+    color: #000000;
+}
+
+.green-link {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.green-link:hover {
+    color: #13173D;
+}
+
+.colour-white {
+    color: #000000;
+    border-color: #000000;
+}
+
+.colour-white:hover {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.hover-green {
+    color: rgb(0, 0, 0);
+}
+
+.hover-green:hover {
+    color: #0E122E;
+}
+
+
+#quick-touch-page-content {
+    display: flex;
+    flex-flow: row wrap;
+    border: 0;
+    margin: -5px;
+    background: none;
+    padding-bottom:10px
+}
+
+#quick-touch-page-content .p-quick-touch-inner {
+    display: flex;
+    width:100%
+}
+
+#quick-touch-page-content .quick-touch-block {
+    background: #fff;
+    margin: 3px;
+    flex: 1;
+    flex-direction: column;
+    box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+    border-radius:6px
+}
+
+#quick-touch-page-content .quick-touch-block .quick-touch-body {
+    padding: 10px;
+    width:100%
+}
+
+#quick-touch-page-content .quick-touch-content {
+    padding:0
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style {
+    position:relative
+}
+
+@media (max-width: 900px) {
+    #quick-touch-page-content .p-quick-touch-inner {
+        display:block
+    }
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon {
+    padding: 35px;
+    border-radius: 3px;
+    position: relative;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    float:left
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon span {
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform:translate(-50%, -50%)
+}
+
+.quick-touch-block .quick-touch-icon-box-style .icon-box-body {
+    float: left;
+    width: 100%;
+    text-align:left
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon + .icon-box-body {
+    width: calc(100% - 100px);
+    padding-left:10px
+}
+
+.quick-touch-block .quick-touch-icon-box-style .icon-box-body h4 {
+    margin: 0;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    color:inherit
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon.blue {
+    color: #FFF;
+    background: #c84448;
+    border:1px solid #fcfcfc
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon.blue + .icon-box-body h4 {
+    color:#c84448
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon.green {
+    color: #FFF;
+    background: #20b6e4;
+    border:1px solid #fcfcfc
+}
+
+.quick-touch-block .quick-touch-icon-box-style .icon-box-links .button--green {
+    color: #FFF;
+    background: #20b6e4;
+    border:1px solid #fcfcfc
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon.green + .icon-box-body h4 {
+    color:#20b6e4
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon.red {
+    color: #FFF;
+    background: #386c80;
+    border:1px solid #fcfcfc
+}
+
+.quick-touch-block .quick-touch-icon-box-style .icon-box-links .button--red {
+    color: #FFF;
+    background: #386c80;
+    border:1px solid #fcfcfc
+}
+
+.quick-touch-block .quick-touch-icon-box-style .quick-touch_icon.red + .icon-box-body h4 {
+    color:#386c80
+}
+
+.quick-touch-block .quick-touch-icon-box-style + .quick-touch-icon-box-style {
+    margin-top:30px
+}
+
+.quick-touch-block .quick-touch-icon-box-style .icon-box-body p {
+    font-size: 13px;
+    padding-top: 3px;
+    padding-right: 0;
+    padding-bottom: 3px;
+    padding-left: 0;
+    margin:0
+}
+
+.quick-touch-block .quick-touch-icon-box-style:after {
+    content: "";
+    display: table;
+    clear:both
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button {
+    position: absolute;
+    right: 0;
+    color: #000;
+    top: 0;
+    padding: 0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background:none
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button:hover:after {
+    opacity:1
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button .button-text {
+    display:none
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button::after {
+    font-family: 'Font Awesome 5 Pro';
+    font-size: inherit;
+    font-style: normal;
+    font-weight: 400;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 17px !important;
+    color: inherit;
+    position: relative;
+    transform: none;
+    content: '\f304';
+    border: none;
+    background:none
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button--blue:after {
+    content: '\f044';
+    color: #c84448;
+    font-size:22px !important
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button--register:after {
+    content: '\f084';
+    color: #c84448;
+    font-size:22px !important
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button--green:after {
+    content: '\f0e7';
+    color: #20b6e4;
+    font-size:22px !important
+}
+
+#quick-touch-page-content .quick-touch-icon-box-style .icon-box-links .button--red:after {
+    content: '\f0e0';
+    color: #386c80;
+    font-size:22px !important
+}
+
+.fa, .fas, .far, .fal, .fad, .fab {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height:1
+}
+
+.fa-telegram-plane:before {
+    content: "\f3fe"
+}
+
+@media (max-width: 649px) {
+    #quick-touch-page-content {
+        display: none
+    }
 }

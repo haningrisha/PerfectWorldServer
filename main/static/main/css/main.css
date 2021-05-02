@@ -199,3 +199,21 @@ html {
 .accordion-item {
     background-color: #352e2e00;
 }
+
+.no-decoration {
+    text-decoration: none;
+}
+
+.logo {
+    height: 1.7rem;
+}
+
+.btn-danger {
+    color: #141414;
+    background-color: #fb3d50;
+}
+
+.card-img-top {
+    max-height: 200px; 
+    object-fit: cover;
+}
