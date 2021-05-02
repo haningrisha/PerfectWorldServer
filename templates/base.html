@@ -19,23 +19,36 @@
 <header class="p-3 bg-dark text-white">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+      <!-- <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi me-2 bi-joystick" width="32" height="32" viewBox="0 0 16 16">
                 <path d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2z"/>
                 <path d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23z"/>
             </svg>
-      </a>
+      </a> -->
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{% url 'main:index' %}" class="px-2 text-white lovelace nav-link">Logo</a></li>
         <li><a class="nav-link px-2 text-white" id="about-server-btn">О сервере</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Начать игру</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Контакты</a></li>
         <li><a href="{% url 'forum:index' %}" class="nav-link px-2 text-white">Форум</a></li>
-        <li></li>
+        <li class="d-flex">
+          <a href="#" class="d-flex align-items-center ms-4 mb-auto mt-auto mx-2 text-white text-decoration-none">
+            <img src="{% static 'main/img/mmotop.svg' %}" width="32" height="32" alt="MMOTOP">
+          </a>
+        </li>
+        <li class="d-flex">
+          <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
+            <img src="{% static 'main/img/tlg.svg' %}" width="16" height="16" alt="Telegram">
+          </a> 
+        </li>
+        <li class="d-flex">
+          <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
+            <img src="{% static 'main/img/vk.svg' %}" width="16" height="16" alt="VK">
+          </a>
+        </li>
       </ul>
-        <span class="navbar-brand nav-link px-2">Online</span>
         {% block nav_battons %}
-        <button type="button" class="btn btn-outline-light me-2" id="login-nav">Вход</button>
+        <button type="button" class="btn btn-primary me-2" id="login-nav">Вход</button>
         <button type="button" class="btn btn-primary" id="register-nav">Регистрация</button>
         {% endblock %}
     </div>
@@ -64,14 +77,54 @@
 </div>
 {% endif %}
 </main>
-<nav class="footer navbar navbar-dark bg-dark">
-  <div class="container text-white">
-    <a class="navbar-brand montserrat" href="#">Constanta</a>
-      <a class="nav-link text-white" href="#">О сервере</a>
-      <a class="nav-link text-white" href="#">Начать игру</a>
-      <a class="nav-link text-white" href="#">Контакты</a>
-      <a class="nav-link text-white" href="#">Форум</a>
+<nav class="footer navbar navbar-dark bg-dark mt-auto">
+<hr class="mx-4 mt-5">
+  <div class="d-flex container text-white justify-content-between mt-2 px-0">
+      <div class="col-5">
+        <div class="col-11">
+          <ul class="nav mb-2 justify-content-between">
+          <li>
+            <a class="nav-link text-white ps-0" href="#">О сервере</a>
+          </li>
+          <li>
+            <a class="nav-link text-white ps-0" href="#">Начать игру</a>
+          </li>
+          <li>
+            <a class="nav-link text-white ps-0" href="#">Форум</a>
+          </li>
+        </ul>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="row align-bottom">
+          <div class="col-6">
+          <ul class="nav mb-3 justify-content-evenly">
+            <li class="d-flex">
+              <a href="#" class="d-flex align-items-center ms-4 mb-auto mt-auto mx-2 text-white text-decoration-none">
+                <img src="{% static 'main/img/mmotop.svg' %}" width="32" height="32" alt="MMOTOP">
+              </a>
+            </li>
+            <li class="d-flex">
+              <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
+                <img src="{% static 'main/img/tlg.svg' %}" width="16" height="16" alt="Telegram">
+              </a> 
+            </li>
+            <li class="d-flex">
+              <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
+                <img src="{% static 'main/img/vk.svg' %}" width="16" height="16" alt="VK">
+              </a>
+            </li>
+          </ul>
+        </div> 
+        <div class="col-6">
+          <ul class="nav mb-2 mt-1 justify-content-end">
+            <li class="lovelace">Logo</li>
+          </ul>
+        </div>
+        </div>
+    </div> 
   </div>
+  
 </nav>
 </body>
 

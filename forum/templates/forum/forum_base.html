@@ -29,7 +29,7 @@
           </ul>
         </div>
     {% else %}
-        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-outline-light me-2" id="login-nav">Вход</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-primary me-2" id="login-nav">Вход</button>
         <a href="{% url 'forum:register' %}" class="btn btn-primary">Регистрация</a>
     {% endif %}
 {% endblock %}
