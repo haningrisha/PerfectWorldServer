@@ -18,9 +18,11 @@ class SectionList(generic.ListView):
         comments = Comment.objects.order_by("date")
         subsections_count = Subsection.objects.count()
         users_count = User.objects.count()
-        new_user = User.objects.order_by('date_joined').first()
+        new_user = User.objects.order_by('date_joined').last()
         context = super().get_context_data(**kwargs)
-        context['online_users'] = self.get_online_users()
+        users_online = self.get_online_users()
+        context['online_users'] = users_online
+        context['online_users_count'] = len(users_online)
         context['comments'] = comments
         context['subsections_count'] = subsections_count
         context['users_count'] = users_count
