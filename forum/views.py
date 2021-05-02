@@ -6,12 +6,33 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from forum.models import Section, Subsection, Article, User, Comment
 from django.contrib import messages
+from online_users.models import OnlineUserActivity
 
 
 class SectionList(generic.ListView):
     model = Section
     template_name = "forum/index.html"
     context_object_name = "sections"
+
+    def get_context_data(self, **kwargs):
+        comments = Comment.objects.order_by("date")
+        subsections_count = Subsection.objects.count()
+        users_count = User.objects.count()
+        new_user = User.objects.order_by('date_joined').first()
+        context = super().get_context_data(**kwargs)
+        context['online_users'] = self.get_online_users()
+        context['comments'] = comments
+        context['subsections_count'] = subsections_count
+        context['users_count'] = users_count
+        context['new_user'] = new_user
+        return context
+
+    def get_online_users(self):
+        user_activity_objects = OnlineUserActivity.get_user_activities()
+        users_online = []
+        for user_activity_object in user_activity_objects.all():
+            users_online.append(get_object_or_404(User, pk=user_activity_object.pk))
+        return users_online
 
 
 class SubsectionDetail(generic.DeleteView):

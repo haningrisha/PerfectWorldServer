@@ -30,19 +30,22 @@
         <li><a href="{% url 'main:index' %}" class="px-2 text-white lovelace nav-link">Logo</a></li>
         <li><a class="nav-link px-2 text-white" id="about-server-btn">О сервере</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Начать игру</a></li>
-        <li><a href="{% url 'forum:index' %}" class="nav-link px-2 text-white">Форум</a></li>
+          {% block forum_link %}
+          <li><a href="{% url 'forum:index' %}" class="nav-link px-2 text-white">Форум</a></li>
+          {% endblock %}
+
         <li class="d-flex">
           <a href="#" class="d-flex align-items-center ms-4 mb-auto mt-auto mx-2 text-white text-decoration-none">
             <img src="{% static 'main/img/mmotop.svg' %}" width="32" height="32" alt="MMOTOP">
           </a>
         </li>
         <li class="d-flex">
-          <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
+          <a href="https://vk.com/constanta_pw" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
             <img src="{% static 'main/img/tlg.svg' %}" width="16" height="16" alt="Telegram">
           </a> 
         </li>
         <li class="d-flex">
-          <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
+          <a href="https://vk.com/constanta_pw" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
             <img src="{% static 'main/img/vk.svg' %}" width="16" height="16" alt="VK">
           </a>
         </li>
@@ -110,7 +113,7 @@
               </a> 
             </li>
             <li class="d-flex">
-              <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
+              <a href="https://vk.com/constanta_pw" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
                 <img src="{% static 'main/img/vk.svg' %}" width="16" height="16" alt="VK">
               </a>
             </li>

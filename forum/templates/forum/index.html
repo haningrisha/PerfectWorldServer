@@ -8,17 +8,19 @@
     <link rel="stylesheet" href="{% static "forum/forum.css" %}">
 {%  endblock %}
 
+{% block forum_link %}
+
+{% endblock %}
+
 {% block content %}
     {% load static %}
-    <div class="position-relative overflow-hidden p-6 text-center bg-light" style="background: no-repeat top/100% url({% static 'main/img/main.jpg' %})">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">Constanta Forum</h1>
+    <div class="position-relative overflow-hidden text-center bg-light" style="background: no-repeat top/100% url({% static 'main/img/main.jpg' %})">
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <h1 class="display-6 fw-normal">Constanta Forum</h1>
       <p class="lead fw-normal">Perfect World server</p>
         {% if not user.is_authenticated %}
-      <a class="btn colour-green" id="register-btn">Вход</a>
-{#      <a class="btn btn-outline-secondary" href="#">Вход</a>#}
-{#      <a class="btn btn-primary" id="register-btn">Регистрация</a>#}
-      <a class="btn btn-primary" href="#">Регистрация</a>
+      <a class="btn btn-primary mx-1" id="register-btn">Вход</a>
+      <a class="btn btn-primary mx-1" href="#">Регистрация</a>
         {% endif %}
     </div>
     </div>
@@ -28,78 +30,269 @@
           </li>
             <li class="nav-item mt-auto mb-auto ms-2">
                <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Поиск по форуму" aria-label="Search">
-        <button class="btn colour-green" type="submit">Поиск</button>
+        <input class="form-control me-2 montserrat" type="search" placeholder="Поиск по форуму" aria-label="Search">
+        <button class="btn colour-green montserrat" type="submit">Поиск</button>
       </form>
             </li>
         </ul>
     <div class="container mt-4">
-    <div class="accordion" id="sections">
-    {% for section in sections %}
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="heading{{ forloop.counter }}">
-      <button class="accordion-button bg-light-dark text-white btn-green" type="button" data-bs-toggle="collapse" data-bs-target="#section-collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="section-collapse{{ forloop.counter }}">
-        {{ section.name }}
-      </button>
-    </h2>
-    <div id="section-collapse{{ forloop.counter }}" class="accordion-collapse collapse show" aria-labelledby="heading{{ forloop.counter }}">
-      <div class="accordion-body bg-light-dark shadow-meduza">
-      <div class="list-group">
-          {% for subsection in section.subsection_set.all %}
+      <div class="row mb-4">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a class="btn btn-primary">
+            <div class="row">
+            <div class="col-3">
+              <div class="d-flex h-100 justify-content-center align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+              </svg>
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="row h5">
+                Скачать клиент
+              </div>
+              <div class="row text-ultra-small">
+                Версия 1.3.6v x450
+              </div>
+            </div>
+            <div class="col-2">
+              
+              <div class="d-flex h-100 justify-content-center align-items-top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                </svg>
+                </div>
+            </div>
+            </div>
+          </a>
+          <a href="https://vk.com/constanta_pw" class="btn btn-primary">
+            <div class="row">
+              <div class="col-3">
+                <div class="d-flex h-100 justify-content-center align-items-center">
+                  <img src="{% static 'main/img/vk_black.svg' %}" width="32" height="32" alt="Telegram">
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="row h5">
+                  Вконтакте
+                </div>
+                <div class="row text-ultra-small">
+                  Здесь можно узнать все новости проекта
+                </div>
+              </div>
+              <div class="col-2">
+                
+                <div class="d-flex h-100 justify-content-center align-items-top">
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>                  
+                  </svg>
+                </div>
+              </div>
+              </div>
+          </a>
+          <a class="btn btn-primary"><div class="row">
+            <div class="col-3">
+              <div class="d-flex h-100 justify-content-center align-items-center">
+                <img src="{% static 'main/img/tlg_black.svg' %}" width="28" height="28" alt="Telegram">
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="row h5">
+                Telegram
+              </div>
+              <div class="row text-ultra-small">
+                Наш бункер с самыми свежими новостями!
+              </div>
+            </div>
+            <div class="col-2">
+              
+              <div class="d-flex h-100 justify-content-center align-items-top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                  <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>                </svg>
+                </div>
+            </div>
+            </div></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+        <div class="accordion" id="sections">
+                  {% for section in sections %}
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                    <button class="accordion-button bg-light-dark text-white btn-green" type="button" data-bs-toggle="collapse" data-bs-target="#section-collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="section-collapse{{ forloop.counter }}">
+                      {{ section.name }}
+                    </button>
+                  </h2>
+                  <div id="section-collapse{{ forloop.counter }}" class="accordion-collapse collapse show" aria-labelledby="heading{{ forloop.counter }}">
+                    <div class="accordion-body bg-light-dark shadow-meduza">
+                    <div class="list-group">
+                        {% for subsection in section.subsection_set.all %}
 
-              <div class="list-group-item border-white montserrat bg-light-dark">
-              <div class="row">
-                <div class="col-1">
-                    <div class="d-flex h-100 justify-content-start align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark-check-fill hover-grey white" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                    </svg>
+                            <div class="list-group-item montserrat bg-light-dark">
+                            <div class="row">
+                              <div class="col-1">
+                                  <div class="d-flex h-100 justify-content-start align-items-center">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark-check-fill hover-grey white" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                                  </svg>
+                                  </div>
+                              </div>
+                            <div class="col-7">
+                                <a class="green-link" href="{% url "forum:subsection" subsection.id %}">
+                                <h5 class="mb-1">{{ subsection.name }}</h5>
+                                  <p class="mb-1">{{ subsection.description }}</p>
+                                </a>
+                            </div>
+                                <div class="col-1">
+                            <div class="d-flex justify-content-end align-items-center h-100">
+                                <div class="dropdown">
+                                    <a href="#" class="white hover-green" id="dropdownMenuButton{{ forloop.counter }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                      </svg>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton{{ forloop.counter }}">
+                                      <a class="dropdown-item" href="#">Последняя активность</a>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                                {% if subsection.article_set.last.author.avatar %}
+                                    <div class="col-1">
+                                      <img src="{{ subsection.article_set.last.author.avatar.url }}" class="img-rounded img-avatar" alt="{{ subsection.article_set.last.author.nick }}">
+                                    </div>
+                                {% endif %}
+                            <div class="col-2">
+                                <div class="row h-100 align-items-center">
+                                  <div class="row white text-small">
+                                    {{ subsection.article_set.last.author.username }}
+                                </div>
+                                <div class="row white text-ultra-small">
+                                    {{ subsection.article_set.last.date }}
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                  {% endfor %}
+              </div>
+      </div>
+      <div class="col-4">
+        <div class="card mb-2">
+          <div class="card-header">
+            Пользователи онлайн
+          </div>
+          <ul class="list-group list-group-flush montserrat">
+              {% for user in online_users %}
+            <li class="list-group-item">{{ user.username }}</li>
+              {% endfor %}
+          </ul>
+          <div class="card-footer montserrat text-small">
+            Всего: {{ online_users.count }}
+          </div>
+        </div>
+        <div class="card mb-2">
+          <div class="card-header">
+            Последние сообщения
+          </div>
+          <ul class="card-list list-group-flush montserrat px-2 mb-1">
+            <li class="list-group-item px-0">
+              <div class="row px-0">
+                <div class="col-2">
+                    <div class="img-div-sm rounded">
+                      <img src="/media/images/test_stand.jpeg" class="img-rounded rounded message-avatar" alt="admin">
                     </div>
                 </div>
-               <div class="col">
-                   <a class="green-link" href="{% url "forum:subsection" subsection.id %}">
-                  <h5 class="mb-1">{{ subsection.name }}</h5>
-                    <p class="mb-1">{{ subsection.description }}</p>
-                   </a>
-               </div>
-                  <div class="col">
-               <div class="d-flex justify-content-end align-items-center h-100">
-                   <div class="dropdown">
-                       <a href="#" class="white hover-green" id="dropdownMenuButton{{ forloop.counter }}" data-bs-toggle="dropdown" aria-expanded="false">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                        </svg>
-                       </a>
-                       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton{{ forloop.counter }}">
-                        <a class="dropdown-item" href="#">Последняя активность</a>
-                      </div>
-                   </div>
-               </div>
+                <div class="col-10">
+                  <div class="row">
+                    <p class="montserrat mb-comment font-comment-mid text-green mb-1">
+                      admin 
+                    </p>
                   </div>
-                  {% if subsection.article_set.last.author.avatar %}
-                      <div class="col-1">
-                        <img src="{{ subsection.article_set.last.author.avatar.url }}" class="img-rounded img-avatar" alt="{{ subsection.article_set.last.author.nick }}">
-                      </div>
-                  {% endif %}
-               <div class="col-2">
-
-                   <div class="row white">
-                       {{ subsection.article_set.last.author.nick }}
-                   </div>
-                   <div class="row white">
-                       {{ subsection.article_set.last.date }}
-                   </div>
-               </div>
+                  <div class="row">
+                    <p class="mb-comment mb-1 text-small">Нет ты говно</p>
+                  </div>
+                  <div class="row justify-content-between">
+                      <p class="montserrat mb-comment font-comment-sm mb-1 text-small">
+                        April 20, 2021, 10:36 a.m.
+                      </p>
+                  </div>
+                </div>
               </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-header">
+             Статистика форума
+          </div>
+          <ul class="card-list list-group-flush montserrat px-2 mb-1">
+            <li class="list-group-item px-0">
+              <div class="row justify-content-between mb-1 height-20">
+                <div class="col-8 text-small">
+                  Темы:
+                </div>
+                <div class="col-4">
+                  <figure class="text-end">
+                    <blockquote class="blockquote text-small">
+                    <p>1</p>
+                  </blockquote>
+                </figure>
+                </div>
               </div>
-
-          {% endfor %}
+              <div class="row justify-content-between mb-1 height-20">
+                <div class="col-8 text-small">
+                  Сообщения:
+                </div>
+                <div class="col-4">
+                  <figure class="text-end">
+                    <blockquote class="blockquote text-small">
+                    <p>30</p>
+                  </blockquote>
+                </figure>
+                </div>
+              </div>
+              <div class="row justify-content-between mb-1 height-20">
+                <div class="col-8 text-small">
+                  Пользователи:
+                </div>
+                <div class="col-4">
+                  <figure class="text-end">
+                    <blockquote class="blockquote text-small">
+                    <p>2</p>
+                  </blockquote>
+                </figure>
+                </div>
+              </div>
+              <div class="row justify-content-between mb-1 height-20">
+                <div class="col-8 text-small">
+                  Новый пользователь:
+                </div>
+                <div class="col-4">
+                  <figure class="text-end">
+                    <blockquote class="blockquote text-small">
+                    <p>oleghanin</p>
+                  </blockquote>
+                </figure>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
       </div>
-    </div>
-  </div>
-    {% endfor %}
-</div>
+      
+          
     </div>
 
 

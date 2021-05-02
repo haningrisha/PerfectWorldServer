@@ -195,3 +195,7 @@ html {
 .list-group-item {
     color: #ffffff;
 }
+
+.accordion-item {
+    background-color: #352e2e00;
+}

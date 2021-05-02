@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'main',
     'forum',
+    'online_users',
 ]
 
 STATICFILES_FINDERS = [
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'online_users.middleware.OnlineNowMiddleware',
 ]
 
 ROOT_URLCONF = 'PerfectWorldServer.urls'
