@@ -24,5 +24,7 @@ urlpatterns = [
     path('forum/', include("forum.urls")),
 ]
 
+handler404 = 'main.views.page_not_found'
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

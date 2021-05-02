@@ -21,3 +21,7 @@ def get_news():
     subsection = Subsection.objects.filter(name="Новости").filter(section_id=section.id).first()
     news = Article.objects.filter(subsection_id=subsection.id).order_by('-date')
     return news
+
+
+def page_not_found(request, exception):
+    return render(request, "main/not_found.html")
