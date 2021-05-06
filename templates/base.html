@@ -29,33 +29,33 @@
       </a> -->
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="{% url 'main:index' %}" class="px-2 text-white lovelace nav-link">
-          <img src="{% static 'main/img/logo.png' %}" class="logo" alt="logo">
+        <li><a href="http://constantapw.ru/" class="px-2 text-white lovelace nav-link">
+          <img src="./index_files/logo.png" class="logo" alt="logo">
         </a></li>
         <li><a class="nav-link px-2 text-white" id="about-server-btn">О сервере</a></li>
-        <li><a href="{% url 'main:start_game' %}" class="nav-link px-2 text-white">Начать игру</a></li>
+        <li><a href="http://constantapw.ru/start_game" class="nav-link px-2 text-white">Начать игру</a></li>
           {% block forum_link %}
-          <li><a href="{% url 'forum:index' %}" class="nav-link px-2 text-white">Форум</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Форум</a></li>
           {% endblock %}
 
         <li class="d-flex">
           <a href="#" class="d-flex align-items-center ms-4 mb-auto mt-auto mx-2 text-white text-decoration-none">
-            <img src="{% static 'main/img/mmotop.svg' %}" width="32" height="32" alt="MMOTOP">
+            <img src="./index_files/mmotop.svg" width="32" height="32" alt="MMOTOP">
           </a>
         </li>
         <li class="d-flex">
           <a href="https://vk.com/constanta_pw" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
-            <img src="{% static 'main/img/tlg.svg' %}" width="16" height="16" alt="Telegram">
+            <img src="./index_files/tlg.svg" width="16" height="16" alt="Telegram">
           </a> 
         </li>
         <li class="d-flex">
           <a href="https://vk.com/constanta_pw" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
-            <img src="{% static 'main/img/vk.svg' %}" width="16" height="16" alt="VK">
+            <img src="./index_files/vk.svg" width="16" height="16" alt="VK">
           </a>
         </li>
       </ul>
         {% block nav_battons %}
-        <button type="button" class="btn btn-primary me-2" id="login-nav">Личный кабинет</button>
+        <button type="button" class="btn btn-primary me-2 golden-button" id="login-nav">Личный кабинет</button>
         <!-- <button type="button" class="btn btn-primary" id="register-nav">Регистрация</button> -->
         {% endblock %}
     </div>
@@ -94,9 +94,9 @@
             <a class="nav-link text-white ps-0" href="#">О сервере</a>
           </li>
           <li>
-            <a class="nav-link text-white ps-0" href="#">Начать игру</a>
+            <a class="nav-link text-white ps-0" href="http://constantapw.ru/start_game">Начать игру</a>
           </li>
-          <li>
+           <li>
             <a class="nav-link text-white ps-0" href="#">Форум</a>
           </li>
         </ul>
@@ -108,17 +108,17 @@
           <ul class="nav mb-3 justify-content-evenly">
             <li class="d-flex">
               <a href="#" class="d-flex align-items-center ms-4 mb-auto mt-auto mx-2 text-white text-decoration-none">
-                <img src="{% static 'main/img/mmotop.svg' %}" width="32" height="32" alt="MMOTOP">
+                <img src="./index_files/mmotop.svg" width="32" height="32" alt="MMOTOP">
               </a>
             </li>
             <li class="d-flex">
               <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
-                <img src="{% static 'main/img/tlg.svg' %}" width="16" height="16" alt="Telegram">
+                <img src="./index_files/tlg.svg" width="16" height="16" alt="Telegram">
               </a> 
             </li>
             <li class="d-flex">
               <a href="https://vk.com/constanta_pw" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
-                <img src="{% static 'main/img/vk.svg' %}" width="16" height="16" alt="VK">
+                <img src="./index_files/vk.svg" width="16" height="16" alt="VK">
               </a>
             </li>
           </ul>
@@ -126,7 +126,7 @@
         <div class="col-6">
           <ul class="nav mb-2 mt-1 justify-content-end">
             <li class="lovelace">
-              <img src="{% static 'main/img/logo.png' %}" class="logo" alt="logo">
+              <img src="./index_files/logo.png" class="logo" alt="logo">
             </li>
           </ul>
         </div>

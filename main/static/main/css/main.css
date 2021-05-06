@@ -205,7 +205,12 @@ html {
 }
 
 .logo {
-    height: 1.7rem;
+    height: 2rem;
+}
+
+.golden-button {
+    background-color: #ffd700;
+    border-color:#ffd700;
 }
 
 .btn-danger {
