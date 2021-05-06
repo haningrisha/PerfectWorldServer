@@ -5,3 +5,10 @@
 /log/
 /static/bootstrap-5.0.0-beta3/
 /forum/migrations/0001_initial.py
+/.idea/watcherTasks.xml
+/.idea/vcs.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/dataSources.xml
+/.idea/misc.xml
+/.idea/PerfectWorldServer.iml
+/.idea/modules.xml
