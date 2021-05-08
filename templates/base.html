@@ -29,10 +29,10 @@
       </a> -->
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="http://constantapw.ru/" class="px-2 text-white lovelace nav-link">
+        <li><a href="http://constantapw.ru/" class="px-2 text-white lovelace navbar-brand">
           <img src="./index_files/logo.png" class="logo" alt="logo">
         </a></li>
-        <li><a class="nav-link px-2 text-white" id="about-server-btn">О сервере</a></li>
+        <li><a {% block about_link %}{% endblock %} class="nav-link px-2 text-white" id="about-server-btn">О сервере</a></li>
         <li><a href="http://constantapw.ru/start_game" class="nav-link px-2 text-white">Начать игру</a></li>
           {% block forum_link %}
           <li><a href="#" class="nav-link px-2 text-white">Форум</a></li>
@@ -86,10 +86,10 @@
 </main>
 <nav class="footer navbar navbar-dark bg-dark mt-auto">
 <hr class="mx-4 mt-5">
-  <div class="d-flex container text-white justify-content-between mt-2 px-0">
-      <div class="col-5">
-        <div class="col-11">
-          <ul class="nav mb-2 justify-content-between">
+  <div class="d-flex container text-white justify-content-start mt-2 px-0">
+      <div class="col-6">
+        <div class="col-10 justify-content-start">
+          <ul class="nav mb-2 justify-content-start">
           <li>
             <a class="nav-link text-white ps-0" href="#">О сервере</a>
           </li>
@@ -103,27 +103,27 @@
         </div>
       </div>
       <div class="col-5">
-        <div class="row align-bottom">
+        <div class="row align-bottom justify-content-end">
           <div class="col-6">
           <ul class="nav mb-3 justify-content-evenly">
-            <li class="d-flex">
+            <li class="d-flex mt-2">
               <a href="#" class="d-flex align-items-center ms-4 mb-auto mt-auto mx-2 text-white text-decoration-none">
                 <img src="./index_files/mmotop.svg" width="32" height="32" alt="MMOTOP">
               </a>
             </li>
-            <li class="d-flex">
+            <li class="d-flex mt-2">
               <a href="#" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
                 <img src="./index_files/tlg.svg" width="16" height="16" alt="Telegram">
               </a> 
             </li>
-            <li class="d-flex">
+            <li class="d-flex mt-2">
               <a href="https://vk.com/constanta_pw" class="d-flex align-items-center mb-auto mt-auto mx-2 text-white text-decoration-none">
                 <img src="./index_files/vk.svg" width="16" height="16" alt="VK">
               </a>
             </li>
           </ul>
         </div> 
-        <div class="col-6">
+        <div class="col-2">
           <ul class="nav mb-2 mt-1 justify-content-end">
             <li class="lovelace">
               <img src="./index_files/logo.png" class="logo" alt="logo">
