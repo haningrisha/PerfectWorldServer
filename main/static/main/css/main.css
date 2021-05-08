@@ -233,6 +233,21 @@ html {
     border-color:#ffd700;
 }
 
+.golden-button:hover {
+    background-color: #ffd700;
+    border-color:#ffd700;
+}
+
+.golden-button:focus {
+    background-color: #ffd700;
+    border-color:#ffd700;
+}
+
+.golden-button:active {
+    background-color: #ffd700;
+    border-color:#ffd700;
+}
+
 .btn-danger {
     color: #141414;
     background-color: #fb3d50;
