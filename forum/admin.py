@@ -15,7 +15,7 @@ class ThreadAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['header', 'date', 'author', 'thread', 'subsection']
+    list_display = ['header', 'date', 'author', 'thread', 'subsection', 'link']
 
 
 class CommentAdmin(admin.ModelAdmin):

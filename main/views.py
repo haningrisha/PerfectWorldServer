@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from forum.models import Article, Section, Subsection
+from .models import MainPage
 
 
 def index(request):
     news = get_news()
-    return render(request, "main/index.html", context={"news": news})
+    main_page = MainPage.objects.first()
+    return render(request, "main/index.html", context={"news": news, "main_page": main_page})
 
 
 def contacts(request):

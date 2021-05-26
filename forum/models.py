@@ -41,6 +41,7 @@ class Article(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE, null=True, blank=True)
     subsection = models.ForeignKey(Subsection, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to="images/thumbnails", null=True, blank=True)
+    link = models.CharField(max_length=300, null=True)
 
     def __str__(self):
         return self.header

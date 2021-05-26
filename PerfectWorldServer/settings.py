@@ -26,7 +26,7 @@ SECRET_KEY = 'm@=@d-_li5sz&uncbdfj^i*n#uhhl^m4zrk^e(ha5lgk8&yqt@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['constantapw.ru', '127.0.0.1']
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
@@ -141,4 +141,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = "static"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR.parent, 'public_html/media')
