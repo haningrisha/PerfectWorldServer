@@ -7,6 +7,11 @@
     {% load static %}
     <script defer src="{% static "main/js/main.js" %}"></script>
 {% endblock %}
+
+{% block meta %}
+    <meta name="yandex-verification" content="77d999f25b45ebb2" />
+{% endblock %}
+
 {% block content %}
     {% load static %}
     <div class="position-relative overflow-hidden text-center bg-light" style="background: no-repeat top/100% url({% static 'main/img/main.jpg' %})">

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from forum.models import Article, Section, Subsection
-from .models import MainPage
+from .models import MainPage, StartGamePage
 
 
 def index(request):
@@ -15,7 +15,8 @@ def contacts(request):
 
 
 def start_game(request):
-    return render(request, "main/start_game.html")
+    start_game_page = StartGamePage.objects.first()
+    return render(request, "main/start_game.html", {"start_game_page": start_game_page})
 
 
 def get_news():

@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{% static "main/css/main.css" %}">
     {% block static %}
     {% endblock %}
+    {% block meta %}
+    {% endblock %}
 </head>
 <body class="bg-dark">
 {# Header #}
@@ -55,7 +57,7 @@
         </li>
       </ul>
         {% block nav_battons %}
-        <button type="button" class="btn btn-primary me-2 golden-button" id="login-nav">Личный кабинет</button>
+        <a href="https://cp.constantapw.ru" class="btn btn-primary me-2 golden-button" id="login-nav">Личный кабинет</a>
         <!-- <button type="button" class="btn btn-primary" id="register-nav">Регистрация</button> -->
         {% endblock %}
     </div>
